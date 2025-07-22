@@ -23,7 +23,6 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          # IMPORTANT: Replace 'YOUR_IAM_ROLE_ARN_GOES_HERE' with the actual ARN of your IAM role from AWS!
           role-to-assume: arn:aws:iam::221082210129:role/SES-access-role
           # This must be the AWS region where your SES sender identity is verified.
           aws-region: us-east-1 # Example: us-east-1
@@ -31,9 +30,6 @@ jobs:
       - name: Run build (example)
         run: |
           echo "Simulating a build process..."
-          # Replace this with your actual build commands, e.g., 'mvn clean install' for Maven, 'npm test', etc.
-          # To test the email notification for a FAILED build, uncomment the line below:
-          # exit 1
 
       - name: Send Email Notification (on success)
         # This step runs ONLY if all previous steps in this job have succeeded.
